@@ -3,6 +3,19 @@
 require "async/io"
 require "async/io/stream"
 
+class Bot
+  include Async::IO
+
+  attr_reader :host, :port, :name
+
+  def initialize(host, port, name)
+    @host = host
+    @port = port
+    @name = name
+  end
+
+end
+
 def run
   Async do |task|
     endpoint = Async::IO::Endpoint.tcp("irc.freenode.net", 6667)
